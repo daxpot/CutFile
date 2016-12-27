@@ -5,7 +5,12 @@ import os
 
 class CutFile(object):
 
-	"""分割文件"""
+	"""分割文件
+	@param src {string} 待分割的文件
+	@param dist {string} 分割后存放的文件夹
+	@param preg {string} 分割的正则表达式  如"第.*章"
+	@returns {void}
+	"""
 	def __init__(self, src, dist, preg):
 		if os.path.isfile(src) == False:
 			raise Exception("src 必须为一个文件")

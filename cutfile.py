@@ -15,7 +15,7 @@ class CutFile(object):
 		if os.path.isfile(src) == False:
 			raise Exception("src 必须为一个文件")
 
-		dist = dist.rstrip("/") + "/";
+		dist = dist.rstrip("/") + "/"
 		if os.path.exists(dist) == False:
 			os.mkdir(dist)
 
@@ -31,13 +31,13 @@ class CutFile(object):
 		first = ""
 		current = False
 
-		with open(self.src) as f:
+		with open(self.src, encoding="utf-8") as f:
 			for line in f:
 				r = self.pattern.findall(line)
 				if r:
 					filename = self.dist + r[0] + ".txt"
-					print filename
-					current = open(filename, "w")
+					print(filename)
+					current = open(filename, encoding="utf-8", mode="w")
 
 				if current:
 					if first:
@@ -50,4 +50,4 @@ class CutFile(object):
 
 if __name__ == '__main__':
 	cf = CutFile("hunqiburumen.txt", "result", "第.*章")
-	cf.cut();
+	cf.cut()
